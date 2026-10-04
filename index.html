@@ -195,6 +195,18 @@
   }
   @keyframes road { to { background-position: -52px 0; } }
 
+  .buttons .choice-btn {
+    width: 100%;
+    min-height: 64px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    background: white;
+    border: 1px solid #f0dfe5;
+    box-shadow: 0 8px 20px rgba(86,35,56,.07);
+  }
+
   .choice-grid { display: grid; gap: 12px; margin-top: 18px; }
   .choice-btn {
     text-align: left;
@@ -384,11 +396,71 @@ function yesClicked() {
   burstHearts();
 }
 
+let maybeClicks = 0;
+
 function maybeClicked() {
+  maybeClicks++;
   const hint = document.getElementById("hint");
-  hint.textContent = "“Maybe” is suspiciously close to “Yes”... I'll allow it. 👀❤️";
+
+  if (maybeClicks === 1) {
+    hint.textContent = "🥺 Maybe? I'll take that as a “convince me.”";
+  } else if (maybeClicks === 2) {
+    hint.textContent = "👀 You're really making me work for this, huh?";
+  } else if (maybeClicks === 3) {
+    hint.textContent = "😭 Okay Divya, negotiation time.";
+    setTimeout(showMaybeDeal, 500);
+  } else {
+    showMaybeDeal();
+  }
+
   hint.style.animation = "none";
   requestAnimationFrame(() => hint.style.animation = "pop .25s ease");
+}
+
+function showMaybeDeal() {
+  const buttons = document.getElementById("mainButtons");
+  buttons.innerHTML = `
+    <div class="message-box" style="margin-top:0;">
+      <b>Okay Divya, let's negotiate. 😌</b><br>
+      Pick your deal:
+    </div>
+
+    <button class="choice-btn" onclick="maybeDeal('drive')">
+      <span class="choice-icon">🚗</span>
+      <span><b>Car Drive</b><br><span class="tiny">Good music + random conversations + no fixed destination.</span></span>
+    </button>
+
+    <button class="choice-btn" onclick="maybeDeal('rakhi')">
+      <span class="choice-icon">🎀</span>
+      <span><b>Doraemon wali Rakhi</b><br><span class="tiny">Okay, now we're negotiating seriously. 😂</span></span>
+    </button>
+
+    <button class="yes" onclick="yesClicked()">💕 Fine... I'll say Yes</button>
+  `;
+  document.getElementById("hint").textContent = "Your move, Divya. 👀";
+}
+
+function maybeDeal(type) {
+  if (type === "drive") {
+    selectedDate = "car";
+    document.getElementById("choiceIcon").textContent = "🚗";
+    document.getElementById("choiceTitle").textContent = "Car Drive";
+    document.getElementById("choiceText").textContent =
+      "Good music, random conversations, and no fixed destination. Just you, me and the road. 🌙✨";
+    document.getElementById("choiceVisual").innerHTML =
+      '<div class="ride-card"><div class="car">🚗</div><div style="font-weight:800">Playlist: Us 🎵</div><div class="tiny" style="color:#ddd">Destination: Wherever the road takes us</div><div class="road"></div></div>';
+  } else {
+    selectedDate = "rakhi";
+    document.getElementById("choiceIcon").textContent = "🎀";
+    document.getElementById("choiceTitle").textContent = "Doraemon wali Rakhi";
+    document.getElementById("choiceText").textContent =
+      "A perfectly serious date plan: you tie me a Doraemon wali Rakhi and we both pretend this was completely normal. 😂💙";
+    document.getElementById("choiceVisual").innerHTML =
+      '<div class="message-box">Doraemon approved. 🔵✨<br><b>Rakhi date it is?</b></div>';
+  }
+
+  hideAll();
+  document.getElementById("choice").classList.remove("hidden");
 }
 
 function notClicked() {
