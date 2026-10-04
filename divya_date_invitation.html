@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#fff5f7">
+<title>For Divya ❤️</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(circle at top, #fff 0%, #fff4f7 45%, #ffe7ee 100%);
+    color: #29202a;
+    overflow-x: hidden;
+  }
+
+  .scene {
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 22px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glow {
+    position: fixed;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    filter: blur(45px);
+    opacity: .38;
+    pointer-events: none;
+    background: #ffb7ca;
+  }
+  .g1 { top: -90px; left: -80px; }
+  .g2 { bottom: -100px; right: -80px; background: #c9c7ff; }
+
+  .card {
+    width: min(100%, 430px);
+    background: rgba(255,255,255,.86);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.95);
+    border-radius: 30px;
+    padding: 30px 22px 24px;
+    box-shadow: 0 24px 70px rgba(86, 35, 56, .15);
+    text-align: center;
+    position: relative;
+    z-index: 3;
+    animation: cardIn .8s ease both;
+  }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(24px) scale(.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .top-heart {
+    width: 70px; height: 70px;
+    margin: 0 auto 14px;
+    display: grid; place-items: center;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #ff6f91, #ff9eb4);
+    color: white;
+    font-size: 34px;
+    box-shadow: 0 12px 30px rgba(255, 80, 120, .28);
+    animation: heartbeat 1.7s infinite;
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    8% { transform: scale(1.08); }
+    16% { transform: scale(1); }
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-size: 11px;
+    font-weight: 800;
+    color: #b34b6a;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(34px, 9vw, 48px);
+    line-height: 1;
+    margin: 0 0 12px;
+  }
+
+  .intro {
+    color: #665761;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 auto 22px;
+    max-width: 340px;
+  }
+
+  .question {
+    font-size: 20px;
+    font-weight: 750;
+    margin: 8px 0 18px;
+  }
+
+  .buttons {
+    display: grid;
+    gap: 11px;
+    position: relative;
+  }
+
+  button {
+    border: 0;
+    min-height: 52px;
+    border-radius: 17px;
+    padding: 13px 18px;
+    font: inherit;
+    font-weight: 750;
+    font-size: 15px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  button:active { transform: scale(.97); }
+
+  .yes {
+    color: white;
+    background: linear-gradient(135deg, #ff557f, #ff7b9c);
+    box-shadow: 0 9px 24px rgba(255, 80, 120, .25);
+  }
+  .maybe {
+    color: #7b3c51;
+    background: #fff0f4;
+    border: 1px solid #ffd2de;
+  }
+  .not {
+    color: #63525a;
+    background: #f5f1f3;
+    border: 1px solid #e8dfe3;
+  }
+
+  .hint {
+    min-height: 24px;
+    margin: 14px 0 0;
+    font-size: 13px;
+    color: #8a6975;
+  }
+
+  .footer {
+    margin-top: 18px;
+    font-size: 11px;
+    color: #a58f97;
+  }
+
+  .hidden { display: none !important; }
+
+  .success h2, .choice h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 31px;
+    margin: 6px 0 10px;
+  }
+
+  .success p, .choice p {
+    color: #6c5962;
+    line-height: 1.55;
+    font-size: 14px;
+  }
+
+  .ride-card {
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #171720, #343445);
+    color: white;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    min-height: 150px;
+  }
+  .ride-card::after {
+    content: "";
+    position: absolute;
+    width: 160px; height: 160px;
+    right: -55px; bottom: -85px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+  }
+
+  .road {
+    height: 3px;
+    background: repeating-linear-gradient(90deg, #fff 0 28px, transparent 28px 52px);
+    margin: 22px -18px 0;
+    opacity: .65;
+    animation: road 1s linear infinite;
+  }
+  @keyframes road { to { background-position: -52px 0; } }
+
+  .choice-grid { display: grid; gap: 12px; margin-top: 18px; }
+  .choice-btn {
+    text-align: left;
+    display: flex; align-items: center; gap: 13px;
+    background: white;
+    border: 1px solid #f0dfe5;
+    box-shadow: 0 8px 20px rgba(86,35,56,.07);
+  }
+  .choice-icon {
+    width: 45px; height: 45px; flex: 0 0 45px;
+    display: grid; place-items: center;
+    border-radius: 14px;
+    font-size: 24px;
+    background: #fff2f5;
+  }
+
+  .back {
+    background: transparent;
+    color: #9a6879;
+    font-size: 13px;
+    margin-top: 12px;
+    min-height: 40px;
+  }
+
+  .message-box {
+    margin-top: 15px;
+    padding: 13px 14px;
+    border-radius: 15px;
+    background: #fff5f7;
+    color: #754b5b;
+    font-size: 13px;
+    line-height: 1.5;
+    animation: pop .25s ease;
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: scale(.96); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .dodge-area {
+    position: relative;
+    height: 95px;
+    margin-top: 2px;
+  }
+  .dodge-area .not {
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+  .floating {
+    position: fixed !important;
+    z-index: 50;
+    width: auto;
+    min-width: 150px;
+    box-shadow: 0 14px 35px rgba(70,35,50,.22);
+    animation: floaty 1.5s ease-in-out infinite alternate;
+  }
+  @keyframes floaty {
+    from { margin-top: -4px; }
+    to { margin-top: 7px; }
+  }
+
+  .heart {
+    position: fixed;
+    bottom: -30px;
+    pointer-events: none;
+    z-index: 2;
+    animation: rise linear forwards;
+  }
+  @keyframes rise {
+    from { transform: translateY(0) rotate(0deg); opacity: 0; }
+    12% { opacity: .9; }
+    to { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+  }
+
+  .car {
+    font-size: 50px;
+    display: inline-block;
+    animation: carMove 2.4s ease-in-out infinite alternate;
+    filter: drop-shadow(0 8px 8px rgba(0,0,0,.25));
+  }
+  @keyframes carMove {
+    from { transform: translateX(-7px); }
+    to { transform: translateX(7px); }
+  }
+
+  .tiny { font-size: 12px; opacity: .75; }
+
+  @media (min-width: 600px) {
+    .scene { padding: 40px; }
+    .card { padding: 38px 34px 28px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+  }
+</style>
+</head>
+<body>
+<div class="scene">
+  <div class="glow g1"></div>
+  <div class="glow g2"></div>
+
+  <main class="card" id="card">
+    <section id="invite">
+      <div class="top-heart">♥</div>
+      <div class="eyebrow">A tiny proposal for</div>
+      <h1>Divya</h1>
+      <p class="intro">I have a very important question for you...<br>and I need a very honest answer. 👀</p>
+      <div class="question">Will you go on a little date with me? ❤️</div>
+
+      <div class="buttons" id="mainButtons">
+        <button class="yes" onclick="yesClicked()">💕 Yes</button>
+        <button class="maybe" onclick="maybeClicked()">🥺 Maybe</button>
+        <button class="not" id="notBtn" onclick="notClicked()">😏 Maybe Not</button>
+      </div>
+
+      <div class="hint" id="hint"></div>
+      <div class="footer">No pressure... but choose wisely. 😌</div>
+    </section>
+
+    <section id="success" class="success hidden">
+      <div class="top-heart">💖</div>
+      <div class="eyebrow">Excellent decision</div>
+      <h2>I knew you'd say yes 😌</h2>
+      <p>Your passenger seat is officially reserved, Divya.</p>
+
+      <div class="choice-grid">
+        <button class="choice-btn" onclick="chooseRide()">
+          <span class="choice-icon">🚗</span>
+          <span><b>Car Drive</b><br><span class="tiny">Let's just drive and see where we end up.</span></span>
+        </button>
+        <button class="choice-btn" onclick="chooseRakhi()">
+          <span class="choice-icon">🎀</span>
+          <span><b>Tie me a Doraemon wali Rakhi</b><br><span class="tiny">Because apparently this is also a date idea. 😂</span></span>
+        </button>
+      </div>
+      <button class="back" onclick="goBack()">← Wait, let me rethink</button>
+    </section>
+
+    <section id="choice" class="choice hidden">
+      <div id="choiceIcon" style="font-size:52px"></div>
+      <h2 id="choiceTitle"></h2>
+      <p id="choiceText"></p>
+      <div id="choiceVisual"></div>
+      <button class="yes" onclick="finalAccept()">❤️ It's a date.</button>
+      <br>
+      <button class="back" onclick="showSuccess()">← Pick the other one</button>
+    </section>
+
+    <section id="final" class="success hidden">
+      <div class="top-heart">🥰</div>
+      <div class="eyebrow">Date confirmed</div>
+      <h2>Okay, it's a date, Divya ❤️</h2>
+      <p id="finalText"></p>
+      <div class="ride-card">
+        <div class="car" id="finalCar">🚗</div>
+        <div style="font-weight:800; margin-top:8px;">Passenger: Divya</div>
+        <div class="tiny" style="color:#ddd; margin-top:4px;">Destination: Wherever the road takes us ✨</div>
+        <div class="road"></div>
+      </div>
+      <p style="margin-top:16px;">Now just tell me when you're ready. 😌</p>
+    </section>
+  </main>
+</div>
+
+<script>
+let notClicks = 0;
+let selectedDate = "";
+let floating = false;
+
+const messages = [
+  "Are you sure? Think carefully, Divya. 👀",
+  "Hmm... I don't think you understood the question. 😭",
+  "That button is getting a little too confident. 😏"
+];
+
+function hideAll() {
+  ["invite","success","choice","final"].forEach(id => document.getElementById(id).classList.add("hidden"));
+}
+
+function yesClicked() {
+  hideAll();
+  document.getElementById("success").classList.remove("hidden");
+  burstHearts();
+}
+
+function maybeClicked() {
+  const hint = document.getElementById("hint");
+  hint.textContent = "“Maybe” is suspiciously close to “Yes”... I'll allow it. 👀❤️";
+  hint.style.animation = "none";
+  requestAnimationFrame(() => hint.style.animation = "pop .25s ease");
+}
+
+function notClicked() {
+  notClicks++;
+  const hint = document.getElementById("hint");
+  hint.textContent = messages[Math.min(notClicks - 1, messages.length - 1)];
+  hint.style.animation = "none";
+  requestAnimationFrame(() => hint.style.animation = "pop .25s ease");
+
+  if (notClicks >= 4) {
+    activateDodge();
+    moveButton();
+  }
+}
+
+function activateDodge() {
+  if (floating) return;
+  floating = true;
+  const btn = document.getElementById("notBtn");
+  btn.classList.add("floating");
+  btn.addEventListener("mouseenter", moveButton);
+  btn.addEventListener("touchstart", moveButton, {passive:true});
+}
+
+function moveButton(e) {
+  const btn = document.getElementById("notBtn");
+  if (!floating) return;
+
+  const pad = 14;
+  const maxX = Math.max(pad, window.innerWidth - btn.offsetWidth - pad);
+  const maxY = Math.max(90, window.innerHeight - btn.offsetHeight - pad);
+  const x = pad + Math.random() * (maxX - pad);
+  const y = 80 + Math.random() * Math.max(20, maxY - 80);
+
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
+  btn.style.transform = "none";
+
+  hint.textContent = "Okay okay... now you have to catch the “Maybe Not” button. 😂";
+}
+
+function chooseRide() {
+  selectedDate = "car";
+  document.getElementById("choiceIcon").textContent = "🚗";
+  document.getElementById("choiceTitle").textContent = "Car Drive";
+  document.getElementById("choiceText").textContent =
+    "No fixed destination. Just good music, a nice drive, and you in the passenger seat. 🌙✨";
+  document.getElementById("choiceVisual").innerHTML =
+    '<div class="ride-card"><div class="car">🚗</div><div style="font-weight:800">Playlist: Us 🎵</div><div class="tiny" style="color:#ddd">Destination: Wherever the road takes us</div><div class="road"></div></div>';
+  hideAll();
+  document.getElementById("choice").classList.remove("hidden");
+}
+
+function chooseRakhi() {
+  selectedDate = "rakhi";
+  document.getElementById("choiceIcon").textContent = "🎀";
+  document.getElementById("choiceTitle").textContent = "Doraemon wali Rakhi";
+  document.getElementById("choiceText").textContent =
+    "A perfectly serious date plan: you tie me a Doraemon wali Rakhi, I try not to complain, and we both pretend this was completely normal. 😂💙";
+  document.getElementById("choiceVisual").innerHTML =
+    '<div class="message-box">Doraemon approved. 🔵✨ <br><b>Rakhi date it is?</b></div>';
+  hideAll();
+  document.getElementById("choice").classList.remove("hidden");
+}
+
+function finalAccept() {
+  hideAll();
+  document.getElementById("final").classList.remove("hidden");
+  document.getElementById("finalText").textContent = selectedDate === "car"
+    ? "The car drive has officially been booked in my imagination. Now we just need your timing. 😌🚗"
+    : "The Doraemon wali Rakhi appointment is officially confirmed. I hope you're ready for this extremely important ceremony. 😂🎀";
+  burstHearts();
+}
+
+function showSuccess() {
+  hideAll();
+  document.getElementById("success").classList.remove("hidden");
+}
+
+function goBack() {
+  hideAll();
+  document.getElementById("invite").classList.remove("hidden");
+}
+
+function burstHearts() {
+  for (let i = 0; i < 18; i++) {
+    setTimeout(() => {
+      const h = document.createElement("div");
+      h.className = "heart";
+      h.textContent = ["♥","♡","💕","✨"][Math.floor(Math.random()*4)];
+      h.style.left = (5 + Math.random()*90) + "vw";
+      h.style.fontSize = (14 + Math.random()*18) + "px";
+      h.style.animationDuration = (3 + Math.random()*3) + "s";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 6500);
+    }, i * 90);
+  }
+}
+</script>
+</body>
+</html>
